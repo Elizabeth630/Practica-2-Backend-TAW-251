@@ -15,77 +15,76 @@ Incluye seguridad basada en roles, CRUD completo, validaciones y autenticación 
 
 ---
 
-## 📂 Estructura del proyecto principal (`src/main/java/com/universidad`)
+## 📂 Estructura del proyecto
 
+```plaintext
 src/
 └── main/
-├── java/
-│ └── com.universidad/
-│ ├── controller/ # Controladores REST para manejar solicitudes HTTP
-│ │ ├── DocenteController.java
-│ │ ├── EstudianteController.java
-│ │ ├── EvaluacionDocenteController.java
-│ │ ├── InscripcionController.java
-│ │ └── MateriaController.java
-│ ├── dto/ # Clases DTO para transferencia de datos entre capas
-│ │ ├── DocenteDTO.java
-│ │ ├── EstudianteDTO.java
-│ │ └── MateriaDTO.java
-│ ├── model/ # Entidades JPA que representan las tablas de la base de datos
-│ │ ├── Docente.java
-│ │ ├── Estudiante.java
-│ │ ├── EvaluacionDocente.java
-│ │ ├── Materia.java
-│ │ └── Persona.java
-│ ├── registro/ # Módulo para manejo de usuarios, roles y seguridad
-│ │ ├── config/ # Configuración de seguridad y base de datos
-│ │ │ ├── DatabaseInitializer.java
-│ │ │ └── SecurityConfig.java
-│ │ ├── controller/ # Controladores para autenticación y manejo de usuarios
-│ │ │ ├── AuthController.java
-│ │ │ └── UsuarioController.java
-│ │ ├── dto/ # DTO para autenticación
-│ │ │ └── AuthDTO.java
-│ │ ├── model/ # Modelos de seguridad: usuario y rol
-│ │ │ ├── Rol.java
-│ │ │ └── Usuario.java
-│ │ ├── repository/ # Repositorios para acceso a datos de seguridad
-│ │ │ ├── RolRepository.java
-│ │ │ └── UsuarioRepositoryl.java
-│ │ ├── security/ # Clases para JWT y filtros de seguridad
-│ │ │ ├── JwtAuthenticationEntryPoint.java
-│ │ │ ├── JwtAuthenticationFilter.java
-│ │ │ └── JwtUtils.java
-│ │ ├── service/ # Servicios relacionados a usuarios
-│ │ │ └── UserDetailsServiceImpl.java
-│ ├── repository/ # Repositorios para entidades principales (Docente, Estudiante, etc.)
-│ │ ├── DocenteRepository.java
-│ │ ├── EstudianteRepository.java
-│ │ ├── EvaluacionDocenteRepository.java
-│ │ ├── InscripcionRepository.java
-│ │ └── MateriaRepository.java
-│ ├── service/ # Interfaces de servicios para la lógica de negocio
-│ │ ├── IDocenteService.java
-│ │ ├── IEstudianteService.java
-│ │ ├── IEvaluacionDocenteService.java
-│ │ ├── IInscripcionService.java
-│ │ └── IMateriaService.java
-│ ├── service/impl/ # Implementaciones concretas de los servicios
-│ │ ├── DocenteServiceImpl.java
-│ │ ├── EstudianteServiceImpl.java
-│ │ ├── EvaluacionDocenteServiceImpl.java
-│ │ ├── InscripcionServiceImpl.java
-│ │ └── MateriaServiceImpl.java
-│ ├── validation/ # Validadores personalizados y manejo global de excepciones
-│ │ ├── ApiError.java
-│ │ ├── EstudianteValidator.java
-│ │ └── GlobalExceptionHandler.java
-│ └── AppApplication.java # Clase principal para levantar la aplicación Spring Boot
-├── resources/
-│ └── application.properties # Configuraciones de la aplicación (base de datos, puerto, JWT, etc.)
+    ├── java/
+    │   └── com.universidad/
+    │       ├── controller/
+    │       │   ├── DocenteController.java
+    │       │   ├── EstudianteController.java
+    │       │   ├── EvaluacionDocenteController.java
+    │       │   ├── InscripcionController.java
+    │       │   └── MateriaController.java
+    │       ├── dto/
+    │       │   ├── DocenteDTO.java
+    │       │   ├── EstudianteDTO.java
+    │       │   └── MateriaDTO.java
+    │       ├── model/
+    │       │   ├── Docente.java
+    │       │   ├── Estudiante.java
+    │       │   ├── EvaluacionDocente.java
+    │       │   ├── Materia.java
+    │       │   └── Persona.java
+    │       ├── registro/
+    │       │   ├── registro/config/
+    │       │   │   ├── DatabaseInitializer.java
+    │       │   │   └── SecurityConfig.java
+    │       │   ├── registro/controller/
+    │       │   │   ├── AuthController.java
+    │       │   │   └── UsuarioController.java
+    │       │   ├── registro/dto/
+    │       │   │   └── AuthDTO.java
+    │       │   ├── registro/model/
+    │       │   │   ├── Rol.java
+    │       │   │   └── Usuario.java
+    │       │   ├── registro/repository/
+    │       │   │   ├── RolRepository.java
+    │       │   │   └── UsuarioRepositoryl.java
+    │       │   ├── registro/security/
+    │       │   │   ├── JwtAuthenticationEntryPoint.java
+    │       │   │   ├── JwtAuthenticationFilter.java
+    │       │   │   └── JwtUtils.java
+    │       │   ├── registro/service/
+    │       │   │   └── UserDetailsServiceImpl.java
+    │       │   ├── repository/
+    │       │   │   ├── DocenteRepository.java
+    │       │   │   ├── EstudianteRepository.java
+    │       │   │   ├── EvaluacionDocenteRepository.java
+    │       │   │   ├── InscripcionRepository.java
+    │       │   │   └── MateriaRepository.java
+    │       │   ├── service/
+    │       │   │   ├── IDocenteService.java
+    │       │   │   ├── IEstudianteService.java
+    │       │   │   ├── IEvaluacionDocenteService.java
+    │       │   │   ├── IInscripcionService.java
+    │       │   │   └── IMateriaService.java
+    │       │   ├── service/impl/
+    │       │   │   ├── DocenteServiceImpl.java
+    │       │   │   ├── EstudianteServiceImpl.java
+    │       │   │   ├── EvaluacionDocenteServiceImpl.java
+    │       │   │   ├── InscripcionServiceImpl.java
+    │       │   │   └── MateriaServiceImpl.java
+    │       │   ├── validation/
+    │       │   │   ├── ApiError.java
+    │       │   │   ├── EstudianteValidator.java
+    │       │   │   └── GlobalExceptionHandler.java
+    │       │   └── AppApplication.java
+    ├── resources/
+    │   └── application.properties
 
-
----
 
 ## 📌 Endpoints principales  
 (La aplicación expone múltiples endpoints REST, algunos ejemplos:)
